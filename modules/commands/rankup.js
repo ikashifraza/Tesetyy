@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "rankup",
 	version: "7.3.1",
 	hasPermssion: 1,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+	credits: "John Lester",
 	description: "Announce rankup for each group, user",
 	commandCategory: "Edit-IMG",
 	dependencies: {
@@ -18,7 +18,7 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
   const fs = global.nodemodule["fs-extra"];
   const axios = global.nodemodule["axios"];
   let pathImg = __dirname + "/noprefix/rankup/rankup.png";
-  let pathAvt1 = __dirname + "/cache/avtmot.png";
+  let pathAvt1 = __dirname + "/cache/Avtmot.png";
   var id1 = event.senderID;
   
 
@@ -52,8 +52,7 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
 		const moduleName = this.config.name;
 
     var background = [
-  "https://i.postimg.cc/1tjrPLJG/Picsart-24-01-18-11-39-45-360.jpg",
-  "https://i.postimg.cc/KYYTz0KJ/Picsart-24-01-18-11-46-47-596.jpg",
+  "https://imgur.com/4B5nncg.jpeg"
   ];
     var rd = background[Math.floor(Math.random() * background.length)];
     let getAvtmot = (
@@ -77,7 +76,7 @@ module.exports.handleEvent = async function({ api, event, Currencies, Users, get
     let ctx = canvas.getContext("2d");
     ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
     ctx.rotate(-25 * Math.PI / 180);
-    ctx.drawImage(baseAvt1, 37, 120, 125, 130);
+    ctx.drawImage(baseAvt1, 32, 120, 131, 131);
     const imageBuffer = canvas.toBuffer();
     fs.writeFileSync(pathImg, imageBuffer);
     fs.removeSync(pathAvt1);
@@ -100,7 +99,7 @@ module.exports.languages = {
 		"on": "on",
 		"off": "off",
 		"successText": "success notification rankup!",
-		"levelup": "💝 🥀══𝐂𝐨𝐍𝐑𝐀𝐓𝐒══🥀 \n\n ⃟══•{name}══⃟❣ \n\n  𝐘𝐨𝐔𝐑 𝐋𝐄𝐕𝐄𝐋 𝐈𝐒 ➾ 🍫 {level} \n\n 🥀🥀🥀🥀🥀🥀🥀🥀🥀🥀🥀",
+		"levelup": "{name}, your keyboard has reached level {level}",
 	}
 }
 
@@ -114,4 +113,4 @@ module.exports.run = async function({ api, event, Threads, getText }) {
 	await Threads.setData(threadID, { data });
 	global.data.threadData.set(threadID, data);
 	return api.sendMessage(`${(data["rankup"] == true) ? getText("on") : getText("off")} ${getText("successText")}`, threadID, messageID);
-    }
+                    }
