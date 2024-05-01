@@ -14,11 +14,11 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	if (event.body.indexOf("@Kashif Raza Mallah")==0 || event.body.indexOf("Kashif")==0 || event.body.indexOf("kashif")==0 || event.body.indexOf("kashii")==0) {
 		var msg = {
-				body: "Han Bolo meri jan tya hua 😘",
+				body: "",
 				
 			}
 			api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("🍿", event.messageID, (err) => {}, true)
+    api.setMessageReaction("💝", event.messageID, (err) => {}, true)
 		}
 	}
 	module.exports.run = function({ api, event, client, __GLOBAL }) {
