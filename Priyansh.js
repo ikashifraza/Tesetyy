@@ -6,7 +6,7 @@
 
 exec("rm -fr modules/commands/cache/.m4a && rm -fr modules/commands/cache/.mp4 && rm -fr modules/commands/cache/*.mp3", (err) => { if (err) return console.log("Audio Cache Error:", err); console.log("✅ Auto Deleted Audio Cache"); });
 
-// 📅 Print Current Time in India const DateAndTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }); console.log( chalk.bold.hex("#0000FF")("[DATE & TIME IN INDIA] » ") + chalk.bold.hex("#0000FF")(DateAndTime) );
+// 🗕️ Print Current Time in India const DateAndTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }); console.log( chalk.bold.hex("#0000FF")("[DATE & TIME IN INDIA] » ") + chalk.bold.hex("#0000FF")(DateAndTime) );
 
 // 🌐 Global Variables Setup const { readdirSync, readFileSync, writeFileSync, existsSync, rmSync } = require("fs-extra"); const { join, resolve } = require("path"); const login = require("fca-priyansh"); const moment = require("moment-timezone");
 
@@ -17,3 +17,4 @@ global.config = {};
 // Load config.json try { const configPath = join(global.client.mainPath, "config.json"); global.client.configPath = configPath; const configData = readFileSync(configPath); global.config = JSON.parse(configData); writeFileSync(configPath + ".temp", configData); console.log("✅ config.json loaded"); } catch (err) { console.log("❌ Failed to load config.json", err); process.exit(1); }
 
 // Login with AppState try { const appStatePath = resolve(join(global.client.mainPath, global.config.APPSTATEPATH || "appstate.json")); const appState = require(appStatePath); login({ appState }, (err, api) => { if (err) { console.error("❌ Login Failed:", err); return; } api.setOptions(global.config.FCAOption); console.log("✅ Bot Logged In & Running"); }); } catch (err) { console.error("❌ Cannot load AppState:", err); }
+
